@@ -36,9 +36,9 @@ $ ./pipes
 In the associated Gradescope assignment, describe to the best of your
 understanding, what this code is doing.
 
-Lastly, make a change to your program such that Cookie Monster says "Thank you!"
-to Cookie Maker at the end. The output of the modified program should look like
-the following:
+Lastly, modify the program such that Cookie Monster says "Thank you!" to Cookie
+Maker at the end. The output of the modified program should look like the
+following:
 
 ```
 Cookie Monster writing: I want cookies! (16 bytes)
