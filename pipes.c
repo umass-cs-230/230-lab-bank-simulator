@@ -59,8 +59,8 @@ int main() {
         perror("could not create pipe two_to_one");
         exit(1);
     }
-
-    if (fork() == 0) {
+    pid_t child1 = fork();
+    if (child1 == 0) {
         // Child 1
 
         // First, we close the read end of the pipe.
@@ -73,8 +73,8 @@ int main() {
         // pipes to the child_one function.
         exit(cookie_maker(two_to_one[0], one_to_two[1]));
     }
-
-    if (fork() == 0) {
+    pid_t child2 = fork();
+    if (child2 == 0) {
         // Child 2
 
         // First, we close the read end of the pipe.
@@ -88,6 +88,7 @@ int main() {
         exit(cookie_monster(one_to_two[0], two_to_one[1]));
     }
 
-    wait(NULL);
+    waitpid(child1, NULL, 0);
+    waitpid(child2, NULL, 0);
     printf("The parent cleaned up the cookie mess!\n");
 }
